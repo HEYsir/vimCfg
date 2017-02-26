@@ -1,0 +1,190 @@
+" ========vundle 插件管理和设置======================================
+" Vundle is used here to manage packages:
+" https://github.com/VundleVim/Vundle.vim
+"
+" Brief help
+" :PluginList          - list configured bundles
+" :PluginInstall(!)    - install (update) bundles
+" :PluginSearch(!) foo - search (or refresh cache first) for foo
+" :PluginClean(!)      - confirm (or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Plugin commands are not allowed.
+"repos on vim-scripts,just do: Plugin'PluginName'
+"repos on github, just do: Plugin "author/PluginName"
+"your git plugin，just do: Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (ie. when working on your own plugin)
+"Plugin 'file://Users/gmarik/path/to/plugin'
+
+" --包依赖----------  
+" package dependence:  ctags, ag(the_silver_searcher)
+" python dependence:   pep8, pyflake
+
+set nocompatible
+filetype off        " required!
+set hidden
+
+" inspired by spf13, 自定义需要的插件集合
+if !exists('g:bundle_groups')
+    let g:bundle_groups=['tmux', 'rust', 'python', 'markdown', 'json', 'shell', 'beta']
+endif
+
+" --vundle的设定,管理所有插件----------  
+set rtp+=~/.vim/bundle/vundle      " set Vundle run time path
+call vundle#begin()  " vundle init
+Plugin 'gmarik/Vundle.vim' " let Vundle manage Vundle, required!
+
+" 移动光标到插件名上, 使用'#'快速跳转到每个插件的配置处
+
+Plugin 'scrooloose/syntastic'  " syntastic 语法检查插件
+"Plugin 'w0rp/ale'               " ale 替换syntastic，异步模式,需要vim8.0 或者 neoVim支持
+
+" 窗口界面增强插件
+Plugin 'The-NERD-tree'                 " nerdtree 文件管理插件
+Plugin 'jistr/vim-nerdtree-tabs'            " vim-nerdtree-tabs 使打开的多个文件共享同一个nerdtree,nerdtree增强插件，
+Plugin 'Xuyuanp/nerdtree-git-plugin'        " nerdtree-git-plugin 使nerdtree上显示git状态标识,nerdtree增强插件
+
+Plugin 'majutsushi/tagbar'                  " tagbar 标签窗口栏
+
+" ctrlspace
+Plugin 'vim-ctrlspace/vim-ctrlspace'        " 一个多buffer分割的无敌插件，值得拥有
+
+" airline 状态栏增强
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" rainbow_parentheses 括号显示增强
+Plugin 'kien/rainbow_parentheses.vim'
+"Plugin 'luochen1990/rainbow'               " rainbow_parentheses的改进版本g:raninbow_active = 1 
+
+Plugin 'Yggdroot/indentLine'                "缩进对其线，用于以空格缩进的代码。 
+
+" 主题,我用自己改过的https://github.com/chriskempson/tomorrow-theme/vim/Tomorrow-Night-Eighties.vim
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'tomasr/molokai'
+
+" 代码自动补全
+Plugin 'SirVer/ultisnips'   " ultisnips 代码片段资源,需要学习
+Plugin 'Valloric/YouCompleteMe'     " YouCompleteMe 据说迄今最强大的VIM自动补全插件 重启：YcmRestartServer
+Plugin 'Raimondi/delimitMate'       " delimitMate 自动补全单引号，双引号等
+"Plugin 'docunext/closetag.vim', { 'for': ['html', 'xml'] }    " closetag 自动补全html/xml标签
+
+Plugin 'honza/vim-snippets'     " vim-snippets 代码片段快速插入, depends ultisnips
+
+" 快速编码
+Plugin 'scrooloose/nerdcommenter'         " nerdcommenter 快速注释    [leader + c + i]
+Plugin 'junegunn/vim-easy-align'          " easyalign 快速赋值语句对齐
+Plugin 'bronson/vim-trailing-whitespace'  " trailingwhitespace 快速去行尾空格 [leader + <Space>]
+
+Plugin 'terryma/vim-expand-region'        " expandregion 选中区块
+Plugin 'terryma/vim-multiple-cursors'     " multiplecursors 多光标选中编辑
+
+Plugin 'tpope/vim-repeat'     " for repeat -> enhance surround.vim, . to repeat command
+Plugin 'tpope/vim-surround'   " 快速加入修改环绕字符
+
+" 快速移动
+" text object，搞不明白，先藏着
+Plugin 'kana/vim-textobj-user'    " 支持自定义文本对象
+Plugin 'kana/vim-textobj-line'    " 增加行文本对象: l   dal yal cil
+Plugin 'kana/vim-textobj-entire'  " 增加文件文本对象: e   dae yae cie
+Plugin 'kana/vim-textobj-indent'  " 增加缩进文本对象: i   dai yai cii - 相同缩进属于同一块
+
+Plugin 'vim-scripts/matchit.zip'      " % to match
+Plugin 'kshenoy/vim-signature'    " signature 显示marks - 方便自己进行标记和跳转
+                                " m[a-zA-Z] add mark
+                                " '[a-zA-Z] go to mark
+                                " m<Space>  del all marks
+                                " m/        list all marks
+
+Plugin 'Lokaltog/vim-easymotion'  " easymotion 更高效的移动 [,, + w/fx/h/j/k/l]
+Plugin 'unblevable/quick-scope'   " quickscope 更高效的行内移动, f/F/t/T, 才触发
+
+
+" 搜索
+Plugin 'ctrlpvim/ctrlp.vim'       " ctrlp   " change to https://github.com/ctrlpvim/ctrlp.vim
+Plugin 'tacahiroy/ctrlp-funky'    " ctrlpfunky 基于ctrlp的函数列表，在没有ctags时可以搜索跳转到函数定义位置
+Plugin 'dyng/ctrlsf.vim'          " ctrlsf 基于ctrlp的文件内容搜索，类似sublimetext中Ctrl-Shift-F 的搜索，搜索效果显示整个上下文
+                                " In CtrlSF window:
+                                " 回车/o, 打开
+                                " t       在tab中打开(建议)
+                                " T - Lkie t but focus CtrlSF window instead of opened new tab.
+                                " q - Quit CtrlSF window.
+
+Plugin 'haya14busa/incsearch.vim'   " incsearch vim自带incsearch的增强版，同时高亮所有的搜索匹配项
+                                    " map /  <Plug>(incsearch-forward)
+                                    " map ?  <Plug>(incsearch-backward)
+                                    " map g/ <Plug>(incsearch-stay)
+
+
+" git
+Plugin 'tpope/vim-fugitive'           " fugitive    vim的git支持包
+Plugin 'airblade/vim-gitgutter'       " gitgutter   显示git diff状态的插件, 会让Gundo变慢
+
+Plugin 'sjl/gundo.vim'    " gundo 可以查看回到某个历史状态
+
+
+" 语言相关
+Plugin 'thinca/vim-quickrun'  " quickrun
+
+if count(g:bundle_groups, 'tmux')
+    " tmux
+    " For tmux navigator Ctrl-hjkl
+    Plugin 'christoomey/vim-tmux-navigator'
+endif
+
+if count(g:bundle_groups, 'rust')
+    Plugin 'rust-lang/rust.vim'	"rust
+endif
+
+
+if count(g:bundle_groups, 'markdown')
+    Plugin 'plasticboy/vim-markdown', {'for': 'md'}
+    " https://github.com/suan/vim-instant-markdown
+    " npm -g install instant-markdown-d
+    " Plug 'suan/vim-instant-markdown'
+    " let g:instant_markdown_slow = 1
+    " let g:instant_markdown_autostart = 0
+    " map <F12> :InstantMarkdownPreview<CR>
+endif
+
+if count(g:bundle_groups, 'python')
+    Plugin 'python.vim'         "python
+
+    " pythonsyntax
+    Plugin 'hdima/python-syntax'     " for python.vim syntax highlight
+    Plugin 'hynek/vim-python-pep8-indent'   " formats Python code to conform to the PEP 8 style guide
+    Plugin 'Glench/Vim-Jinja2-Syntax'
+
+    "Plugin 'vim-indent-object'  " vii to visual select current indent
+
+    " isort  https://github.com/timothycrosley/isort#readme + https://github.com/fisadev/vim-isort#installation
+    " pip install isort
+    Plugin 'fisadev/vim-isort'
+    " Shift-V 上下选中, ctrl + i 规范化
+    let g:vim_isort_map = '<C-i>'
+endif
+
+" if count(g:bundle_groups, 'shell')
+    " Plugin 'Shougo/vimshell.vim'
+" endif
+
+if count(g:bundle_groups, 'json')
+    " json
+    Plugin 'elzr/vim-json', {'for': 'json'}
+endif
+
+if count(g:bundle_groups, 'beta')   " beat ,just for beta version
+    " indent
+    Plugin 'nathanaelkane/vim-indent-guides'
+    " <leader>ig to trigger
+    let g:indent_guides_start_level = 2
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_auto_colors = 0
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
+
+endif
+
+call vundle#end()  " vundle结束
+
+
