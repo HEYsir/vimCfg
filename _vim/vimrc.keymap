@@ -1,0 +1,40 @@
+"==========================================
+" HotKey Settings  自定义快捷键设置
+"==========================================
+" 主要按键重定义
+
+" 关闭方向键, 强迫自己用 hjkl
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
+
+" F1 废弃这个键,防止调出系统帮助
+" I can type :help on my own, thanks.  Protect your fat fingers from the evils of <F1>
+noremap <F1> <Esc>
+
+" -----------插件按键自定义---------------
+" --NERDTree--
+"map <leader>n :NERDTreeToggle<CR>     " 由vim-nerdtree-tabs命令替换
+map ff  :NERDTreeFind<CR>    " 在NERDTree中找到当前文件位置
+
+" --vim-nerdtree-tabs
+map <Leader>n   :NERDTreeTabsToggle<CR>    " 在所有tabs打开或关闭NERDTree
+
+" --Tabbar--
+nmap tt :TagbarToggle<CR>   " 打开或关闭Tagbar标签页
+
+" --fugitive--
+nnoremap <leader>ge :Gdiff<CR>
+" not ready to open
+" <leader>gb maps to :Gblame<CR>
+" <leader>gs maps to :Gstatus<CR>
+" <leader>gd maps to :Gdiff<CR>  和现有冲突
+" <leader>gl maps to :Glog<CR>
+" <leader>gc maps to :Gcommit<CR>
+" <leader>gp maps to :Git push<CR>
+
+" --gitgutter--
+nnoremap <leader>gs :GitGutterToggle<CR>    " 打开git显示支持
+
+

@@ -1,0 +1,28 @@
+if has("gui_running")
+    " GVIM相关配置
+    let g:mapleader = ' '
+
+    " -----窗口-----
+    set guioptions-=r	" 隐藏滚动条
+    set guioptions-=L	" 隐藏滚动条
+    set guioptions-=b	" 隐藏滚动条
+    set guioptions+=e
+    "set guioptions-=T   	" 隐藏工具栏  
+    set guioptions-=m   	" 隐藏菜单栏  
+    set showtabline=1		" 隐藏顶部标签栏,0:隐藏
+    set guitablabel=%M\ %t
+    set linespace=2
+    set noimd
+
+    " -----字体-----
+    if (has("win32"))
+	    set guifont=Consolas:h9:cANSI
+	    set guifontwide=cGB2312:NSimSun:h9
+    else
+	    set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
+    endif
+
+    " -----配色-----	
+    "colorscheme solarized
+endif
+

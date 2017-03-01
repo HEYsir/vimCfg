@@ -23,8 +23,8 @@ set nocompatible	"去掉vi的兼容模式
 let mapleader = ' ' "将空格设置为leader
 
 " == 插件加载 =====================================
-if filereadable(expand("~/.vim/vim.bundles"))
-    "source ~/.vim/.vimrc.bundles
+if filereadable(expand("~/.vim/vimrc.bundles"))
+    source ~/.vim/vimrc.bundles
 endif
 
 " == 主题配置 =====================================
@@ -350,7 +350,7 @@ endif
 
 "======自定义快捷键 ===========
 if filereadable(expand("~/.vim/vimrc.keymap"))
-    "source ~/.vim/.vimrc.keymap
+    source ~/.vim/vimrc.keymap
 endif
 
 

@@ -36,18 +36,17 @@ Plugin 'gmarik/Vundle.vim' " let Vundle manage Vundle, required!
 
 " 移动光标到插件名上, 使用'#'快速跳转到每个插件的配置处
 
-Plugin 'scrooloose/syntastic'  " syntastic 语法检查插件
+"Plugin 'scrooloose/syntastic'  " syntastic 语法检查插件
 "Plugin 'w0rp/ale'               " ale 替换syntastic，异步模式,需要vim8.0 或者 neoVim支持
 
-" 窗口界面增强插件
+" 界面、显示、buff\tabs等增强插件
 Plugin 'The-NERD-tree'                 " nerdtree 文件管理插件
 Plugin 'jistr/vim-nerdtree-tabs'            " vim-nerdtree-tabs 使打开的多个文件共享同一个nerdtree,nerdtree增强插件，
 Plugin 'Xuyuanp/nerdtree-git-plugin'        " nerdtree-git-plugin 使nerdtree上显示git状态标识,nerdtree增强插件
 
 Plugin 'majutsushi/tagbar'                  " tagbar 标签窗口栏
 
-" ctrlspace
-Plugin 'vim-ctrlspace/vim-ctrlspace'        " 一个多buffer分割的无敌插件，值得拥有
+Plugin 'vim-ctrlspace/vim-ctrlspace'       " ctrlspace buff、tabs的一个管理及搜索功能的插件?????得好好看看,
 
 " airline 状态栏增强
 Plugin 'vim-airline/vim-airline'
@@ -63,68 +62,69 @@ Plugin 'Yggdroot/indentLine'                "缩进对其线，用于以空格�
 "Plugin 'altercation/vim-colors-solarized'
 "Plugin 'tomasr/molokai'
 
+" git
+Plugin 'tpope/vim-fugitive'           " fugitive    vim的git支持包
+Plugin 'airblade/vim-gitgutter'       " gitgutter   显示git diff状态的插件, 会让Gundo变慢
+
 " 代码自动补全
-Plugin 'SirVer/ultisnips'   " ultisnips 代码片段资源,需要学习
-Plugin 'Valloric/YouCompleteMe'     " YouCompleteMe 据说迄今最强大的VIM自动补全插件 重启：YcmRestartServer
-Plugin 'Raimondi/delimitMate'       " delimitMate 自动补全单引号，双引号等
+"Plugin 'SirVer/ultisnips'   " ultisnips 代码片段资源,需要学习
+"Plugin 'Valloric/YouCompleteMe'     " YouCompleteMe 据说迄今最强大的VIM自动补全插件 重启：YcmRestartServer
+"Plugin 'Raimondi/delimitMate'       " delimitMate 自动补全单引号，双引号等
 "Plugin 'docunext/closetag.vim', { 'for': ['html', 'xml'] }    " closetag 自动补全html/xml标签
 
-Plugin 'honza/vim-snippets'     " vim-snippets 代码片段快速插入, depends ultisnips
+"Plugin 'honza/vim-snippets'     " vim-snippets 代码片段快速插入, depends ultisnips
 
 " 快速编码
-Plugin 'scrooloose/nerdcommenter'         " nerdcommenter 快速注释    [leader + c + i]
-Plugin 'junegunn/vim-easy-align'          " easyalign 快速赋值语句对齐
-Plugin 'bronson/vim-trailing-whitespace'  " trailingwhitespace 快速去行尾空格 [leader + <Space>]
+"Plugin 'scrooloose/nerdcommenter'         " nerdcommenter 快速注释    [leader + c + i]
+"Plugin 'junegunn/vim-easy-align'          " easyalign 快速赋值语句对齐
+"Plugin 'bronson/vim-trailing-whitespace'  " trailingwhitespace 快速去行尾空格 [leader + <Space>]
 
-Plugin 'terryma/vim-expand-region'        " expandregion 选中区块
-Plugin 'terryma/vim-multiple-cursors'     " multiplecursors 多光标选中编辑
+"Plugin 'terryma/vim-expand-region'        " expandregion 选中区块
+"Plugin 'terryma/vim-multiple-cursors'     " multiplecursors 多光标选中编辑
 
-Plugin 'tpope/vim-repeat'     " for repeat -> enhance surround.vim, . to repeat command
-Plugin 'tpope/vim-surround'   " 快速加入修改环绕字符
+"Plugin 'tpope/vim-repeat'     " for repeat -> enhance surround.vim, . to repeat command
+"Plugin 'tpope/vim-surround'   " 快速加入修改环绕字符
 
 " 快速移动
 " text object，搞不明白，先藏着
-Plugin 'kana/vim-textobj-user'    " 支持自定义文本对象
-Plugin 'kana/vim-textobj-line'    " 增加行文本对象: l   dal yal cil
-Plugin 'kana/vim-textobj-entire'  " 增加文件文本对象: e   dae yae cie
-Plugin 'kana/vim-textobj-indent'  " 增加缩进文本对象: i   dai yai cii - 相同缩进属于同一块
+"Plugin 'kana/vim-textobj-user'    " 支持自定义文本对象
+"Plugin 'kana/vim-textobj-line'    " 增加行文本对象: l   dal yal cil
+"Plugin 'kana/vim-textobj-entire'  " 增加文件文本对象: e   dae yae cie
+"Plugin 'kana/vim-textobj-indent'  " 增加缩进文本对象: i   dai yai cii - 相同缩进属于同一块
 
-Plugin 'vim-scripts/matchit.zip'      " % to match
-Plugin 'kshenoy/vim-signature'    " signature 显示marks - 方便自己进行标记和跳转
+"Plugin 'vim-scripts/matchit.zip'      " % to match
+"Plugin 'kshenoy/vim-signature'    " signature 显示marks - 方便自己进行标记和跳转
                                 " m[a-zA-Z] add mark
                                 " '[a-zA-Z] go to mark
                                 " m<Space>  del all marks
                                 " m/        list all marks
 
-Plugin 'Lokaltog/vim-easymotion'  " easymotion 更高效的移动 [,, + w/fx/h/j/k/l]
-Plugin 'unblevable/quick-scope'   " quickscope 更高效的行内移动, f/F/t/T, 才触发
+"Plugin 'Lokaltog/vim-easymotion'  " easymotion 更高效的移动 [,, + w/fx/h/j/k/l]
+"Plugin 'unblevable/quick-scope'   " quickscope 更高效的行内移动, f/F/t/T, 才触发
 
 
 " 搜索
-Plugin 'ctrlpvim/ctrlp.vim'       " ctrlp   " change to https://github.com/ctrlpvim/ctrlp.vim
-Plugin 'tacahiroy/ctrlp-funky'    " ctrlpfunky 基于ctrlp的函数列表，在没有ctags时可以搜索跳转到函数定义位置
-Plugin 'dyng/ctrlsf.vim'          " ctrlsf 基于ctrlp的文件内容搜索，类似sublimetext中Ctrl-Shift-F 的搜索，搜索效果显示整个上下文
+"Plugin 'ctrlpvim/ctrlp.vim'       " ctrlp   " change to https://github.com/ctrlpvim/ctrlp.vim
+"Plugin 'tacahiroy/ctrlp-funky'    " ctrlpfunky 基于ctrlp的函数列表，在没有ctags时可以搜索跳转到函数定义位置
+"Plugin 'dyng/ctrlsf.vim'          " ctrlsf 基于ctrlp的文件内容搜索，类似sublimetext中Ctrl-Shift-F 的搜索，搜索效果显示整个上下文
                                 " In CtrlSF window:
                                 " 回车/o, 打开
                                 " t       在tab中打开(建议)
                                 " T - Lkie t but focus CtrlSF window instead of opened new tab.
                                 " q - Quit CtrlSF window.
 
-Plugin 'haya14busa/incsearch.vim'   " incsearch vim自带incsearch的增强版，同时高亮所有的搜索匹配项
+"Plugin 'haya14busa/incsearch.vim'   " incsearch vim自带incsearch的增强版，同时高亮所有的搜索匹配项
                                     " map /  <Plug>(incsearch-forward)
                                     " map ?  <Plug>(incsearch-backward)
                                     " map g/ <Plug>(incsearch-stay)
 
 
-" git
-Plugin 'tpope/vim-fugitive'           " fugitive    vim的git支持包
-Plugin 'airblade/vim-gitgutter'       " gitgutter   显示git diff状态的插件, 会让Gundo变慢
 
-Plugin 'sjl/gundo.vim'    " gundo 可以查看回到某个历史状态
+"Plugin 'sjl/gundo.vim'    " gundo 可以查看回到某个历史状态
 
 
 " 语言相关
-Plugin 'thinca/vim-quickrun'  " quickrun
+"Plugin 'thinca/vim-quickrun'  " quickrun
 
 if count(g:bundle_groups, 'tmux')
     " tmux
@@ -186,5 +186,152 @@ if count(g:bundle_groups, 'beta')   " beat ,just for beta version
 endif
 
 call vundle#end()  " vundle结束
+
+" ============================== 插件配置 ================================
+" ################### 界面、显示、buff\tabs等 ###################
+" nerdtree {{{
+    "let g:NERDTreeDirArrows=0
+    let g:NERDTreeChDirMode=2   "Always tell vim change the tree root when it is changed
+
+    let NERDTreeHighlightCursorline=1
+    let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$', '\~$' ]
+
+    "close vim if the only window left open is a NERDTree
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
+
+    "open NERDTree automatically when vim starts up on opening a directory
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+    " s/v 分屏打开文件
+    let g:NERDTreeMapOpenSplit = 's'
+    let g:NERDTreeMapOpenVSplit = 'v'
+" }}}
+
+" nerdtreetabs {{{
+    let g:nerdtree_tabs_no_startup_for_diff = 1 " vim在diff模式下不自动打开NERDTree
+    " 关闭同步
+    " let g:nerdtree_tabs_synchronize_view=0
+    " let g:nerdtree_tabs_synchronize_focus=0
+    " 自动开启nerdtree
+    " thank to @ListenerRi, see https://github.com/wklken/k-vim/issues/165
+    let g:nerdtree_tabs_open_on_console_startup=1
+    " let g:nerdtree_tabs_open_on_gui_startup=0
+" }}}
+
+" tagbar {{{
+    let g:tagbar_autofocus = 1      " the cursor will move to the Tagbar window when it is opened
+    let g:tagbar_autoclose = 1     " the Tagbar window will automatically close when you jump to a tag
+    " let g:tagbar_foldlevel = 0    "Folds with a level higher than this number will be closed
+    " let g:tagbar_autoshowtag = 1
+    let g:tagbar_left=1 "设置tagbar的窗口显示的位置,为左边  
+    let g:tagbar_ctags_bin='/usr/bin/ctags'  "设置tagbar使用的ctags的插件,必须要设置对
+    "打开文件自动 打开tagbar  
+    autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
+" }}}
+
+" ctrlspace {{{
+    set hidden  " requried!!!
+    let g:airline_exclude_preview = 1
+
+    hi CtrlSpaceSelected guifg=#586e75 guibg=#eee8d5 guisp=#839496 gui=reverse,bold ctermfg=10 ctermbg=7 cterm=reverse,bold
+    hi CtrlSpaceNormal   guifg=#839496 guibg=#021B25 guisp=#839496 gui=NONE ctermfg=12 ctermbg=0 cterm=NONE
+    hi CtrlSpaceSearch   guifg=#cb4b16 guibg=NONE gui=bold ctermfg=9 ctermbg=NONE term=bold cterm=bold
+    hi CtrlSpaceStatus   guifg=#839496 guibg=#002b36 gui=reverse term=reverse cterm=reverse ctermfg=12 ctermbg=8
+
+    if has("gui_running")
+        " Settings for MacVim and Inconsolata font
+        let g:CtrlSpaceSymbols = { "File": "◯", "CTab": "▣", "Tabs": "▢" }
+    endif
+
+    if executable("ag")
+        let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'        "This command is used to collect all files in your project directory
+    endif
+
+    " let g:CtrlSpaceSearchTiming = 500       "搜索间隔，毫秒，默认200
+" }}}
+
+" airline {{{
+    set laststatus=2
+    let g:airline_theme="molokai" 
+    "打开tabline功能,方便查看Buffer和切换,省去了minibufexpl插件
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#buffer_nr_show = 1
+
+    " 关闭状态显示空白符号计数
+    let g:airline#extensions#whitespace#enabled = 0
+    let g:airline#extensions#whitespace#symbol = '!'
+
+    "set guifont=Consolas\ for\ Powerline\ FixedD:h11	 " 设置consolas字体
+    "let g:airline_powerline_fonts = 1   "required after install font 
+
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif
+    "let g:airline_left_sep = '▶'
+    "let g:airline_left_alt_sep = '❯'
+    "let g:airline_right_sep = '◀'
+    "let g:airline_right_alt_sep = '❮'
+    "let g:airline_symbols.linenr = '¶'
+    "let g:airline_symbols.branch = '⎇'
+" }}}
+
+" rainbow_parentheses {{{
+    "\ ['black',       'SeaGreen3'], 不加入这行, 防止黑色括号出现, 很难识别
+    let g:rbpt_colorpairs = [
+        \ ['brown',       'RoyalBlue3'],
+        \ ['Darkblue',    'SeaGreen3'],
+        \ ['darkgray',    'DarkOrchid3'],
+        \ ['darkgreen',   'firebrick3'],
+        \ ['darkcyan',    'RoyalBlue3'],
+        \ ['darkred',     'SeaGreen3'],
+        \ ['darkmagenta', 'DarkOrchid3'],
+        \ ['brown',       'firebrick3'],
+        \ ['gray',        'RoyalBlue3'],
+        \ ['darkmagenta', 'DarkOrchid3'],
+        \ ['Darkblue',    'firebrick3'],
+        \ ['darkgreen',   'RoyalBlue3'],
+        \ ['darkcyan',    'SeaGreen3'],
+        \ ['darkred',     'DarkOrchid3'],
+        \ ['red',         'firebrick3'],
+        \ ]
+    let g:rbpt_max = 16
+    let g:rbpt_loadcmd_toggle = 0
+    au VimEnter * RainbowParenthesesToggle
+    au Syntax * RainbowParenthesesLoadRound
+    au Syntax * RainbowParenthesesLoadSquare
+    au Syntax * RainbowParenthesesLoadBraces
+" }}}
+
+" git  git操作还是习惯命令行,vim里面处理简单diff编辑操作
+" fugitive {{{
+" }}}
+
+" gitgutter {{{
+    " 同git diff,实时展示文件中修改的行
+    " 只是不喜欢除了行号多一列, 默认关闭,gs时打开
+    let g:gitgutter_map_keys = 0
+    let g:gitgutter_enabled = 0
+    let g:gitgutter_highlight_lines = 1
+" }}}
+
+" ################### 语言相关 ###################
+" rust {{{
+    let g:rustfmt_autosave = 1
+    let g:racer_cmd = "<path-to-racer>/target/release/racer"
+    let $RUST_SRC_PATH="<path-to-rust-srcdir>/src/"
+" }}}
+
+" pythonsyntax {{{
+    let python_highlight_all = 1
+" }}}
+
+" markdown {{{
+    let g:vim_markdown_folding_disabled=1
+" }}}
+
+" json {{{
+    let g:vim_json_syntax_conceal = 0
+" }}}
 
 
