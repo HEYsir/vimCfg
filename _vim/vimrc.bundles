@@ -193,6 +193,9 @@ call vundle#end()  " vundle结束
     "let g:NERDTreeDirArrows=0
     let g:NERDTreeChDirMode=2   "Always tell vim change the tree root when it is changed
 
+    let NERDTreeShowBookmarks=1 " 显示书签
+    let NERDTreeMinimalUI=1 " 不显示帮助面板
+
     let NERDTreeHighlightCursorline=1
     let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$', '\~$' ]
 
@@ -224,15 +227,17 @@ call vundle#end()  " vundle结束
     let g:tagbar_autoclose = 1     " the Tagbar window will automatically close when you jump to a tag
     " let g:tagbar_foldlevel = 0    "Folds with a level higher than this number will be closed
     " let g:tagbar_autoshowtag = 1
-    let g:tagbar_left=1 "设置tagbar的窗口显示的位置,为左边  
+    let g:tagbar_right=1 "设置tagbar的窗口显示的位置,为右边  
     let g:tagbar_ctags_bin='/usr/bin/ctags'  "设置tagbar使用的ctags的插件,必须要设置对
-    "打开文件自动 打开tagbar  
-    autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
+    "打开文件自动 打开tagbar,存在些tag显示和语法高亮的问题
+    "autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
 " }}}
 
 " ctrlspace {{{
     set hidden  " requried!!!
-    let g:airline_exclude_preview = 1
+
+    "This command is requried by airline
+    "let g:CtrlSpaceStatuslineFunction = "airline#extensions#ctrlspace#statusline()"
 
     hi CtrlSpaceSelected guifg=#586e75 guibg=#eee8d5 guisp=#839496 gui=reverse,bold ctermfg=10 ctermbg=7 cterm=reverse,bold
     hi CtrlSpaceNormal   guifg=#839496 guibg=#021B25 guisp=#839496 gui=NONE ctermfg=12 ctermbg=0 cterm=NONE
@@ -254,6 +259,14 @@ call vundle#end()  " vundle结束
 " airline {{{
     set laststatus=2
     let g:airline_theme="molokai" 
+
+    let g:airline_exclude_preview = 1
+
+    " 在只打开一个tab的情况下显示所有的buffers
+    let g:airline#extensions#tabline#enabled = 1
+
+    "let g:airline#extensions#ctrlspace#enabled = 1 "required support vim-ctrlspace
+
     "打开tabline功能,方便查看Buffer和切换,省去了minibufexpl插件
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -265,9 +278,9 @@ call vundle#end()  " vundle结束
     "set guifont=Consolas\ for\ Powerline\ FixedD:h11	 " 设置consolas字体
     "let g:airline_powerline_fonts = 1   "required after install font 
 
-    if !exists('g:airline_symbols')
-        let g:airline_symbols = {}
-    endif
+    "if !exists('g:airline_symbols')
+    "    let g:airline_symbols = {}
+    "endif
     "let g:airline_left_sep = '▶'
     "let g:airline_left_alt_sep = '❯'
     "let g:airline_right_sep = '◀'

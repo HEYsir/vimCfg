@@ -2,6 +2,9 @@
 " HotKey Settings  自定义快捷键设置
 "==========================================
 " 主要按键重定义
+" 关闭当前buffer并显示前一个buff
+"nmap <leader>bd :bp\|bd#<CR>    " 使用:buffers! 还是可以看到可以用bw替换bd
+nmap <leader>bd :Bclose<CR>   " Kwbd插件提供的命令，该插件不仅关闭当前buffer，并解决些问题
 
 " 关闭方向键, 强迫自己用 hjkl
 map <Left> <Nop>
@@ -16,10 +19,10 @@ noremap <F1> <Esc>
 " -----------插件按键自定义---------------
 " --NERDTree--
 "map <leader>n :NERDTreeToggle<CR>     " 由vim-nerdtree-tabs命令替换
-map ff  :NERDTreeFind<CR>    " 在NERDTree中找到当前文件位置
+map <leader>nf  :NERDTreeFind<CR>    " 在NERDTree中找到当前文件位置
 
 " --vim-nerdtree-tabs
-map <Leader>n   :NERDTreeTabsToggle<CR>    " 在所有tabs打开或关闭NERDTree
+"map <Leader>n   :NERDTreeTabsToggle<CR>    " 在所有tabs打开或关闭NERDTree()
 
 " --Tabbar--
 nmap tt :TagbarToggle<CR>   " 打开或关闭Tagbar标签页

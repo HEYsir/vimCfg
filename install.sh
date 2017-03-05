@@ -37,7 +37,7 @@ for i in $HOME/.vim $HOME/.vimrc; do [ -L $i ] && unlink $i; done
 echo "step2: setting up symlinks"
 lnif $CURRENT_DIR/_vimrc $HOME/.vimrc
 lnif $CURRENT_DIR/_vim $HOME/.vim
-
+lnif $CURRENT_DIR/myPlugin/Kwbd.vim $HOME/.vim/plugin/Kwbd.vim
 echo "step3: update/install plugins using vundle"
 
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
