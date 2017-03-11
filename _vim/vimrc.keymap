@@ -40,4 +40,7 @@ nnoremap <leader>ge :Gdiff<CR>
 " --gitgutter--
 nnoremap <leader>gs :GitGutterToggle<CR>    " 打开git显示支持
 
+" --quickrun--
+nmap <Leader>r <Plug>(quickrun)
+map <F10> :QuickRun<CR>
 
