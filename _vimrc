@@ -74,6 +74,16 @@ set helplang=cn  " vim帮助系统设置为中文
 filetype on " 侦测文件类型
 filetype plugin on " 载入文件类型插件
 
+syntax enable
+
+" 自动打开上次编辑过的文件
+au VimLeave * mks! ~/.Session.vim
+if expand("%")==""
+	if(expand("~/.Session.vim")==findfile("~/.Session.vim"))
+		silent :source ~/.Session.vim
+	endif
+endif
+
 " VIM重新打开文件时自动跳转到上次位置，需确认.viminfo当前用户可写
 if has("autocmd")
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -85,11 +95,6 @@ set ruler	" 标尺，用于显示光标位置的行列号。如果窗口有状�
 set scrolloff=3       " 滚动屏幕时距离顶部和底部3行
 
 set showtabline=2 " 2:always show tabline 1:show when new one 0:ever no show
-" 上下左右按键的行为会显示其他信息
-inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
 " -- 高亮相关配置 --------------------------------------
 syntax on			" 开启语法高亮
@@ -312,6 +317,35 @@ endfunc
 
 
 " ================其他======================================================
+" tags软件配置
+"ctags config
+nnoremap <leader>.	:cn<CR>
+nnoremap <leader>,	:cp<CR>
+if has("cscope")
+	nnoremap <C-F12>	:!cscope -Rbq<CR>
+"    set csprg=/usr/local/bin/cscope
+    set csto=0
+	set cspc=3
+    set cst
+    set nocsverb
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+    " add any database in current directory
+    if filereadable("cscope.out")
+	cs add cscope.out
+    endif
+    nnoremap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nnoremap <C-@>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
+    nnoremap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+    set csverb
+else
+	noremap <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+endif
+
 set history=2000    " history存储容量
 set backupext=.bak  " 修改备份文件名
 "set backupdir=/tmp/vimbk/   " 设置备份文件位置（目前存在权限问题，无法正常保存）
