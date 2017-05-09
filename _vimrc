@@ -85,11 +85,6 @@ set ruler	" 标尺，用于显示光标位置的行列号。如果窗口有状�
 set scrolloff=3       " 滚动屏幕时距离顶部和底部3行
 
 set showtabline=2 " 2:always show tabline 1:show when new one 0:ever no show
-" 上下左右按键的行为会显示其他信息
-inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
 " -- 高亮相关配置 --------------------------------------
 syntax on			" 开启语法高亮
