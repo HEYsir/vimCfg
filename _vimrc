@@ -74,6 +74,14 @@ set helplang=cn  " vim帮助系统设置为中文
 filetype on " 侦测文件类型
 filetype plugin on " 载入文件类型插件
 
+" 自动打开上次编辑过的文件  
+au VimLeave * mks! ~/.Session.vim  
+if expand("%")==""  
+	if(expand("~/.Session.vim")==findfile("~/.Session.vim"))  
+		silent :source ~/.Session.vim  
+	endif  
+endif  
+
 " VIM重新打开文件时自动跳转到上次位置，需确认.viminfo当前用户可写
 if has("autocmd")
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
